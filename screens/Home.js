@@ -2,6 +2,10 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 export default function App({ navigation }) {
+  function movingBetweenScreens(name) {
+    navigation.navigate('Pesquisa', { marketName: name });
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.parteDeCima}>
@@ -15,15 +19,15 @@ export default function App({ navigation }) {
         <View style={styles.escolha}>
           <Text style={styles.mercado}>ESCOLHA SEU MERCADO</Text>
 
-          <TouchableOpacity style={{width: '90%', flex: 1}} onPress={() => navigation.navigate('Pesquisa')}>
+          <TouchableOpacity style={{width: '90%', flex: 1}} onPress={() => movingBetweenScreens('DEIRTON')}>
             <Text style={styles.botaos}>SUPERMERCADO DEIRTON</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={{width: '90%', flex: 1}} onPress={() => navigation.navigate('Pesquisa')}>
+          <TouchableOpacity style={{width: '90%', flex: 1}} onPress={() => movingBetweenScreens('BIGA')}>
             <Text style={styles.botaos}>SUPERMERCADO O BIGA</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={{width: '90%', flex: 1}} onPress={() => navigation.navigate('Pesquisa')}>
+          <TouchableOpacity style={{width: '90%', flex: 1}} onPress={() => movingBetweenScreens('SÃO FRANCISCO')}>
             <Text style={styles.botaos}>SUPERMERCADO SÃO FRANCISCO</Text>
           </TouchableOpacity>
         </View>
@@ -43,7 +47,7 @@ const styles = StyleSheet.create({
   },
   parteDeCima: {
     flex: 1,
-    backgroundColor: '#00AD52',
+    backgroundColor: '#00D264',
     width: '100%',
     elevation: 5,
     shadowColor: 'black',
@@ -66,7 +70,6 @@ const styles = StyleSheet.create({
   },
   textoPequeno: {
     flex: 1,
-    fontFamily: 'Arial',
     fontWeight: 'bold',
     color: 'white',
     fontSize: 20,
@@ -76,7 +79,7 @@ const styles = StyleSheet.create({
   },
   precoDaTela: {
     color: 'white',
-    backgroundColor: '#00AD52',
+    backgroundColor: '#00D264',
     borderRadius: 100,
     overflow: 'hidden',
     height: 150,
@@ -94,7 +97,7 @@ const styles = StyleSheet.create({
   escolha: {
     flex: 2,
     borderRadius: 180,
-    backgroundColor: '#00AD52',
+    backgroundColor: '#00D264',
     width: '80%',
     marginBottom: 30,
     elevation: 8,
@@ -105,7 +108,6 @@ const styles = StyleSheet.create({
   },
   mercado: {
     flex: 1,
-    backgroundColor: '#00AD52',
     textAlign: 'center',
     color: 'white',
     fontSize: 25,
@@ -115,7 +117,7 @@ const styles = StyleSheet.create({
   botaos: {
     borderRadius: 15,
     fontWeight: 'bold',
-    backgroundColor: '#3B8A4D',
+    backgroundColor: '#419F57',
     padding: 25,
     color: 'white',
     textWeight: 'bold',
