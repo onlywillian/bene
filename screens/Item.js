@@ -1,9 +1,9 @@
 import { StyleSheet, Text } from 'react-native';
 
+import Header from './components/Header';
+
 export default function Item() {
     return (
-        <Text>
-            Tela de Pesquisa
-        </Text>
+        <Header />
     )
 }
