@@ -1,56 +1,61 @@
-import { StyleSheet, View, ScrollView } from 'react-native';
+import { useEffect, useState } from 'react';
+import { StyleSheet, View, FlatList } from 'react-native';
 
 import Header from './components/Header';
+import Loading from './components/Loading';
+import Item from './components/Item';
 
 export default function Pesquisa({ route }) {
+    const [itens, setitens] = useState(false);
     const { marketName } = route.params;
 
-    const obj = [
-        {
-            nome: 'ARROZ PARBORIZADO',
-            marca: 'ITIJUCA',
-            peso: '1kg',
-            preco: 'R$ 4,50'
-        },
-        {
-            nome: 'MANTEIGA',
-            marca: 'JAJAJA',
-            peso: '500 g',
-            preco: 'R$ 7,00'
-        },
-        {
-            nome: 'ARROZ PARBORIZADO',
-            marca: 'ITIJUCA',
-            peso: '1kg',
-            preco: 'R$ 4,50'
-        },
-    ]
+    useEffect(() => {
+        async function getData() {
+            const response = await fetch(`https://ceara-cientifico.herokuapp.com/${marketName.toLowerCase()}`);
+            const data = await response.json();
+
+            setitens(data);
+        }
+        getData();
+    }, []);
+
+    const render = ({ item }) => {
+        var peso = '';
+
+        if (item.pesoG != null) {
+            peso = item.pesoG + 'g';
+        } else if (item.pesoKG != null) {
+            peso = item.pesoKG + 'kg';
+        } else {
+            peso = 'Não informado';
+        }
+
+        return ( 
+            <Item 
+                marca={item.marca}
+                peso={peso}
+                preco={item.preco}
+                tipo={item.description || item.tipo}
+            />
+        )
+    };
 
     return (
         <>
             <Header marketName={marketName}/>
-            <ScrollView style={styles.container}>
-                <View style={{flex: 1, alignItems: 'center'}}>
-                    {obj.map(item => (
-                        <View style={styles.item}>
-                            
-                        </View>
-                    ))}
-                </View>
-            </ScrollView>
+            <View style={styles.container}>
+                {itens ? <FlatList 
+                    data={itens}
+                    renderItem={render}
+                    style={{flex: 1, width: '100%'}}
+                /> : <Loading />}
+            </View>
         </>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        height: '65%'
+        flex: 6,
     },
-    item: {
-        height: 200,
-        borderWidth: 1,
-        width: '90%',
-        marginVertical: 20,
-
-    }
 });

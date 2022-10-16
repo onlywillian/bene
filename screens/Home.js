@@ -14,7 +14,8 @@ export default function App({ navigation }) {
       </View>
       <View style={styles.parteDeBaixo}>
         <View style={styles.bola}>
-          <Text style={styles.precoDaTela}>149,99 R$</Text>
+          <Text style={styles.precoDaTela}>49,99</Text>
+          <Text style={styles.precoDaTelaInferior}>R$</Text>
         </View>
         <View style={styles.escolha}>
           <Text style={styles.mercado}>ESCOLHA SEU MERCADO</Text>
@@ -59,14 +60,14 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: 20,
   },
   textoGrande: {
-    flex: 1,
+    flex: 3,
     color: 'white',
     fontSize: 100,
     fontWeight: 'bold',
     textAlign: 'center',
+    textAlignVertical: 'bottom',
   },
   textoPequeno: {
     flex: 1,
@@ -79,20 +80,28 @@ const styles = StyleSheet.create({
   },
   precoDaTela: {
     color: 'white',
-    backgroundColor: '#00D264',
-    borderRadius: 100,
-    overflow: 'hidden',
-    height: 150,
-    width: 150,
     textAlign: 'center',
-    textAlignVertical: 'center',
-    fontSize: 32,
+    textAlignVertical: 'bottom',
     fontWeight: 'bold',
-    elevation: 8,
-    shadowColor: 'black',
+    height: '50%',
+    fontSize: 35,
+  },
+  precoDaTelaInferior: {
+    color: 'white',
+    textAlign: 'center',
+    textAlignVertical: 'top',
+    fontWeight: 'bold',
+    height: '50%',
+    fontSize: 35,
   },
   bola: {
     flex: 1,
+    backgroundColor: '#00D264',
+    borderRadius: 100,
+    width: 160,
+    elevation: 8,
+    marginVertical: 20,
+    shadowColor: 'black',
   },
   escolha: {
     flex: 2,
