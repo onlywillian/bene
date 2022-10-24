@@ -5,23 +5,26 @@ import Header from './components/Header';
 import Loading from './components/Loading';
 import Item from './components/Item';
 
-export default function Pesquisa({ route }) {
+export default function Pesquisa({ route, navigation }) {
     const [itens, setitens] = useState(false);
     const { marketName } = route.params;
 
-    useEffect(() => {
-        async function getItemsData() {
-            const allItemsResponse = await fetch(`https://ceara-cientifico.herokuapp.com/${marketName.toLowerCase()}`);
-            const allItemsData = await allItemsResponse.json();
+    async function getItemsData() {
+        const allItemsResponse = await fetch(`https://ceara-cientifico.herokuapp.com/${marketName.toLowerCase()}`);
+        const allItemsData = await allItemsResponse.json();
 
-            setitens(allItemsData);
-        }
+        setitens(allItemsData);
+    }
+
+    useEffect(() => {
         getItemsData();
     }, []);
 
-    function handleTypeSwitch( market, type ) {
+    function handleTypeSwitch( type ) {
+        if (type == 'todos') return getItemsData();
+
         async function getItemsByTypeData() {
-            const allItemsResponse = await fetch(`https://ceara-cientifico.herokuapp.com/${market}/produtos?tipo=${type}`);
+            const allItemsResponse = await fetch(`https://ceara-cientifico.herokuapp.com/${marketName.toLowerCase()}/produtos?tipo=${type}`);
             const allItemsData = await allItemsResponse.json();
 
             setitens(allItemsData);
@@ -52,7 +55,7 @@ export default function Pesquisa({ route }) {
 
     return (
         <>
-            <Header marketName={marketName} handleTypeSwitch={handleTypeSwitch} />
+            <Header marketName={marketName} handleTypeSwitch={handleTypeSwitch} navigation={navigation}/>
             <View style={styles.container}>
                 {itens ? <FlatList 
                     data={itens}

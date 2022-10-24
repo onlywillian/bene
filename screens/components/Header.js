@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, FlatList } from 'react-native';
+import { StyleSheet, View, Text, FlatList, TouchableOpacity } from 'react-native';
 
 import Back from '../../assets/icons/Arrow';
 import Cat from './Cat';
@@ -32,7 +32,7 @@ export default function Header({ marketName, navigation, handleTypeSwitch }) {
     }
 
     const render = ({ item }) => (
-        <Cat element={item} handleCatClick={handleCatClick}/>
+        <Cat cat={item} handleCatClick={handleCatClick} handleTypeSwitch={handleTypeSwitch}/>
     )
 
     function handleBackClick() {
@@ -42,6 +42,9 @@ export default function Header({ marketName, navigation, handleTypeSwitch }) {
     return (
         <>
             <View style={styles.container}>
+                <TouchableOpacity onPress={handleBackClick}>
+                    <Back style={{position: 'absolute', height: 30, width: 30, transform: [{rotate: '180deg'}]}} fill="#fff"/>
+                </TouchableOpacity>
                 <Text style={styles.headerText}>{ marketName }</Text>
             </View>
             <View style={styles.catsContainer}>

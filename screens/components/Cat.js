@@ -1,14 +1,14 @@
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 
-export default function Cat({ element, handleCatClick }) {    
+export default function Cat({ cat, handleCatClick, handleTypeSwitch }) {    
     return (
         <TouchableOpacity 
-            style={element.active ? styles.catsActive : styles.cats} 
+            style={cat.active ? styles.catsActive : styles.cats} 
             key={Math.random()}
-            onPress={() => handleCatClick(element.id)}
+            onPress={() => {handleCatClick(cat.id); handleTypeSwitch(cat.cat)}}
         >
-            <Text style={element.active ? [styles.text, { color: 'white' }] : styles.text }>
-                    {element.cat.toUpperCase()}
+            <Text style={cat.active ? [styles.text, { color: 'white' }] : styles.text }>
+                    {cat.cat.toUpperCase()}
             </Text>
         </TouchableOpacity>
     )

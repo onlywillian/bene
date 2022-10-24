@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { RFPercentage } from "react-native-responsive-fontsize";
@@ -7,6 +8,18 @@ import Leaf from '../assets/icons/Leaf';
 import Shop from '../assets/icons/Shop';
 
 export default function App({ navigation }) {
+  const [media, setMedia] = useState(false);
+
+  useEffect(() => {
+    async function getData() {
+      const response = await fetch('https://ceara-cientifico.herokuapp.com/mercados/media');
+      const data = await response.json();
+
+      setMedia(data);
+    }
+    getData();
+  }, []);
+
   function movingBetweenScreens(name) {
     navigation.navigate('Pesquisa', { marketName: name });
   }
@@ -26,7 +39,7 @@ export default function App({ navigation }) {
       </View>
       <View style={styles.parteDeBaixo}>
         <View style={styles.bola}>
-          <Text style={styles.precoDaTela}>49,99</Text>
+          <Text style={styles.precoDaTela}>{media ? media.mediaCesta.toFixed(2) : '...'}</Text>
           <Text style={styles.precoDaTelaInferior}>R$</Text>
         </View>
         <View style={styles.escolha}>
