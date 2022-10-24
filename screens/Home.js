@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { RFPercentage } from "react-native-responsive-fontsize";
 
 import Blob from '../assets/icons/Blob';
 import Leaf from '../assets/icons/Leaf';
@@ -41,7 +42,7 @@ export default function App({ navigation }) {
             <Shop fill="#fff" style={styles.shopIcon}/>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.botaos} onPress={() => movingBetweenScreens('SÃO FRANCISCO')}>
+          <TouchableOpacity style={styles.botaos} onPress={() => movingBetweenScreens('FRANCISCO')}>
             <Text style={styles.textBotaos}>SUPERMERCADO SÃO FRANCISCO</Text>
             <Shop fill="#fff" style={styles.shopIcon}/>
           </TouchableOpacity>
@@ -78,7 +79,7 @@ const styles = StyleSheet.create({
   textoGrande: {
     flex: 3,
     color: 'white',
-    fontSize: 100,
+    fontSize: RFPercentage(15),
     fontWeight: 'bold',
     textAlign: 'center',
     textAlignVertical: 'bottom',
@@ -87,7 +88,7 @@ const styles = StyleSheet.create({
     flex: 1,
     fontWeight: 'bold',
     color: 'white',
-    fontSize: 20,
+    fontSize: RFPercentage(2),
     textAlign: 'center',
     marginLeft: "5%",
     marginRight: "5%",
@@ -98,7 +99,7 @@ const styles = StyleSheet.create({
     textAlignVertical: 'bottom',
     fontWeight: 'bold',
     height: '60%',
-    fontSize: 35,
+    fontSize: RFPercentage(6),
   },
   precoDaTelaInferior: {
     color: 'white',
@@ -106,15 +107,15 @@ const styles = StyleSheet.create({
     textAlignVertical: 'top',
     fontWeight: 'bold',
     height: '50%',
-    fontSize: 25,
+    fontSize: RFPercentage(4),
   },
   bola: {
-    flex: 1,
+    height: RFPercentage(20),
+    width: RFPercentage(20),
     backgroundColor: '#00D264',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 100,
-    width: 160,
     elevation: 8,
     marginVertical: 20,
     shadowColor: 'black',
@@ -135,7 +136,7 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlign: 'center',
     color: 'white',
-    fontSize: 25,
+    fontSize: RFPercentage(3),
     fontWeight: 'bold',
     textAlignVertical: 'center',
   },
@@ -154,6 +155,7 @@ const styles = StyleSheet.create({
   },
   textBotaos: {
     flex: 1, 
+    fontSize: RFPercentage(2),
     fontWeight: 'bold', 
     color: 'white', 
     height: '100%', 
@@ -161,8 +163,8 @@ const styles = StyleSheet.create({
   },
   shopIcon: {
     flex: 1,
-    height: 30,
-    width: 30,
+    height: RFPercentage(3),
+    width: RFPercentage(3),
     alignSelf: 'center'
   }
 });

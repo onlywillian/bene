@@ -16,7 +16,7 @@ export default function Item({ marca, peso, preco, tipo }) {
             </View>
             <View style={styles.item}>
                 <Text style={styles.text}>{tipo.toUpperCase()}</Text>
-                <Text style={styles.text}>MARCA: {marca.toUpperCase()}</Text>
+                <Text style={styles.text}>MARCA: {marca?.toUpperCase()}</Text>
                 <Text style={styles.text}>PESO: {peso}</Text>
 
                 <Text style={{fontSize: 35, fontWeight: 'bold'}}>R$ {preco}</Text>

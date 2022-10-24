@@ -10,14 +10,24 @@ export default function Pesquisa({ route }) {
     const { marketName } = route.params;
 
     useEffect(() => {
-        async function getData() {
-            const response = await fetch(`https://ceara-cientifico.herokuapp.com/${marketName.toLowerCase()}`);
-            const data = await response.json();
+        async function getItemsData() {
+            const allItemsResponse = await fetch(`https://ceara-cientifico.herokuapp.com/${marketName.toLowerCase()}`);
+            const allItemsData = await allItemsResponse.json();
 
-            setitens(data);
+            setitens(allItemsData);
         }
-        getData();
+        getItemsData();
     }, []);
+
+    function handleTypeSwitch( market, type ) {
+        async function getItemsByTypeData() {
+            const allItemsResponse = await fetch(`https://ceara-cientifico.herokuapp.com/${market}/produtos?tipo=${type}`);
+            const allItemsData = await allItemsResponse.json();
+
+            setitens(allItemsData);
+        }
+        getItemsByTypeData();
+    }
 
     const render = ({ item }) => {
         var peso = '';
@@ -42,7 +52,7 @@ export default function Pesquisa({ route }) {
 
     return (
         <>
-            <Header marketName={marketName}/>
+            <Header marketName={marketName} handleTypeSwitch={handleTypeSwitch} />
             <View style={styles.container}>
                 {itens ? <FlatList 
                     data={itens}

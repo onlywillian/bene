@@ -1,31 +1,21 @@
-import { useState } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { useState, useEffect } from 'react';
+import { StyleSheet, View, Text, TouchableOpacity, FlatList } from 'react-native';
 
 import Back from '../../assets/icons/Arrow';
+import Cat from './Cat';
 
-export default function Header({ marketName, navigation }) {
-    const [categories, setCategories] = useState([
-        {
-            id: 1,
-            active: true,
-            cat: 'Todos',
-        },
-        {
-            id: 2,
-            active: false,
-            cat: 'Açucar',
-        },
-        {
-            id: 3,
-            active: false,
-            cat: 'Feijão',
-        },
-        {
-            id: 4,
-            active: false,
-            cat: 'Arroz',
-        },
-    ]);
+export default function Header({ marketName, navigation, handleTypeSwitch }) {
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        async function getData() {
+            const response = await fetch('https://ceara-cientifico.herokuapp.com/mercados/categorias');
+            const data = await response.json();
+
+            setCategories(data);
+        }
+        getData();
+    }, []);
 
     function handleCatClick(id) {
         const newCategories = categories.map(e => {
@@ -41,8 +31,12 @@ export default function Header({ marketName, navigation }) {
         return setCategories(newCategories);
     }
 
+    const render = ({ item }) => (
+        <Cat element={item} handleCatClick={handleCatClick}/>
+    )
+
     function handleBackClick() {
-        navigation.back()
+        navigation.goBack();
     }
 
     return (
@@ -51,17 +45,11 @@ export default function Header({ marketName, navigation }) {
                 <Text style={styles.headerText}>{ marketName }</Text>
             </View>
             <View style={styles.catsContainer}>
-                {categories.map(element => (
-                    <TouchableOpacity 
-                        style={element.active ? styles.catsActive : styles.cats} 
-                        key={Math.random()}
-                        onPress={() => handleCatClick(element.id)}
-                    >
-                        <Text style={element.active ? [styles.text, { color: 'white' }] : styles.text }>
-                                {element.cat}
-                        </Text>
-                    </TouchableOpacity>
-                ))}
+                <FlatList 
+                    renderItem={render}
+                    data={categories}
+                    horizontal={true}
+                />
             </View>
         </>
     )
@@ -81,17 +69,17 @@ const styles = StyleSheet.create({
         marginTop: 20,
     },
     catsContainer: {
-        flex: 0.5,
+        flex: 0.6,
         flexDirection: 'row',
     },
     cats: {
-        flex: 1,
+        width: 100,
         backgroundColor: '#ddd',
         borderRadius: 50,
         margin: 15
     },
     catsActive: {
-        flex: 1,
+        width: 100,
         backgroundColor: '#00D264',
         borderRadius: 50,
         margin: 15
