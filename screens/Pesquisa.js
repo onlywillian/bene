@@ -13,6 +13,7 @@ export default function Pesquisa({ route, navigation }) {
         const allItemsResponse = await fetch(`https://ceara-cientifico.herokuapp.com/${marketName.toLowerCase()}`);
         const allItemsData = await allItemsResponse.json();
 
+        
         setitens(allItemsData);
     }
 
@@ -26,7 +27,9 @@ export default function Pesquisa({ route, navigation }) {
         async function getItemsByTypeData() {
             const allItemsResponse = await fetch(`https://ceara-cientifico.herokuapp.com/${marketName.toLowerCase()}/produtos?tipo=${type}`);
             const allItemsData = await allItemsResponse.json();
-
+            
+            console.log(allItemsData);
+            
             setitens(allItemsData);
         }
         getItemsByTypeData();
@@ -49,6 +52,7 @@ export default function Pesquisa({ route, navigation }) {
                 peso={peso}
                 preco={item.preco}
                 tipo={item.description || item.tipo}
+                img={item.img}
             />
         )
     };

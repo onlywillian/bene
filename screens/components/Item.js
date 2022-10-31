@@ -1,18 +1,20 @@
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Image } from 'react-native';
 
 
-export default function Item({ marca, peso, preco, tipo }) {
+export default function Item({ marca, peso, preco, tipo, img }) {
     return (
         <View style={styles.itemContainer}>
             <View style={styles.image}>
-                <Text style={{
-                    color: 'white', 
-                    textAlign: 'center', 
-                    textAlignVertical: 'center', 
-                    height: '100%'
-                }}>
-                    Image
-                </Text>
+                <Image 
+                    style={{
+                        color: 'white', 
+                        textAlign: 'center', 
+                        textAlignVertical: 'center', 
+                        height: '100%'
+                    }} 
+                    source={{uri: img}}
+                    resizeMode='contain'
+                />
             </View>
             <View style={styles.item}>
                 <Text style={styles.text}>{tipo.toUpperCase()}</Text>
@@ -37,7 +39,6 @@ const styles = StyleSheet.create({
     },
     image: {
         flex: 1,
-        backgroundColor: 'gray',
         height: '100%',
         
     },
@@ -47,5 +48,9 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 16
+    },
+    noImage: {
+        backgroundColor: '#eee',
+        height: '100%',
     }
 });
