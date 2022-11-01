@@ -1,6 +1,5 @@
 import { StyleSheet, View, Text, Image } from 'react-native';
 
-
 export default function Item({ marca, peso, preco, tipo, img }) {
     return (
         <View style={styles.itemContainer}>
@@ -12,7 +11,7 @@ export default function Item({ marca, peso, preco, tipo, img }) {
                         textAlignVertical: 'center', 
                         height: '100%'
                     }} 
-                    source={{uri: img}}
+                    source={{uri: typeof img == 'string' ? img : img[1]}}
                     resizeMode='contain'
                 />
             </View>
@@ -50,7 +49,7 @@ const styles = StyleSheet.create({
         fontSize: 16
     },
     noImage: {
-        backgroundColor: '#eee',
+        backgroundColor: '#fff',
         height: '100%',
     }
 });

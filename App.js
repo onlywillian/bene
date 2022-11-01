@@ -10,8 +10,8 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName='Home'>
-        <Stack.Screen name='Home' component={Home} options={{ headerShown: false, statusBarStyle: 'dark' }}/>
-        <Stack.Screen name='Pesquisa' component={Pesquisa} options={{ headerShown: false, statusBarStyle: 'dark' }}/>
+        <Stack.Screen name='Home' component={Home} options={{ headerShown: false, statusBarStyle: 'light', statusBarColor: '#00D264' }}/>
+        <Stack.Screen name='Pesquisa' component={Pesquisa} options={{ headerShown: false, statusBarStyle: 'light', statusBarColor: '#00D264' }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -15,8 +15,10 @@ export default function Header({ marketName, navigation, handleTypeSwitch }) {
             setCategories(data);
         }
         getData();
+        
+        handleCatClick(0)
     }, []);
-
+    
     function handleCatClick(id) {
         const newCategories = categories.map(e => {
             if (e.id === id) {
@@ -27,7 +29,7 @@ export default function Header({ marketName, navigation, handleTypeSwitch }) {
 
             return e;
         })
-
+        
         return setCategories(newCategories);
     }
 
@@ -61,7 +63,7 @@ export default function Header({ marketName, navigation, handleTypeSwitch }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        minHeight: 80,
+        minHeight: 1,
         backgroundColor: '#00D264',
         width: '100%',
     },
@@ -74,13 +76,13 @@ const styles = StyleSheet.create({
     },
     catsContainer: {
         flex: 0.6,
-        minHeight: 50,
+        minHeight: 0.5,
         flexDirection: 'row',
     },
     cats: {
         width: 100,
         minHeight: 10,
-        backgroundColor: '#ddd',
+        backgroundColor: '#fff',
         borderRadius: 50,
         margin: 15
     },

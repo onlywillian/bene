@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { StyleSheet, View, FlatList } from 'react-native';
+import { View, FlatList } from 'react-native';
 
 import Header from './components/Header';
 import Loading from './components/Loading';
@@ -60,7 +60,7 @@ export default function Pesquisa({ route, navigation }) {
     return (
         <>
             <Header marketName={marketName} handleTypeSwitch={handleTypeSwitch} navigation={navigation}/>
-            <View style={styles.container}>
+            <View style={{ flex: 6, backgroundColor: '#fff' }}>
                 {itens ? <FlatList 
                     data={itens}
                     renderItem={render}
@@ -70,9 +70,3 @@ export default function Pesquisa({ route, navigation }) {
         </>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 6,
-    },
-});

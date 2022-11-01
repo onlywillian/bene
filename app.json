@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "bene_app",
-    "slug": "bene_app",
+    "name": "Bene",
+    "slug": "Bene",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
-      "resizeMode": "contain",
+      "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
     "updates": {
@@ -21,13 +21,16 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.bene.beneapp",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#FFFFFF"
       }
     },
-    "web": {
-      "favicon": "./assets/favicon.png"
+    "extra": {
+      "eas": {
+        "projectId": "a92f57b3-7d1c-442f-9c21-d5e38d91d70f"
+      }
     }
   }
 }
