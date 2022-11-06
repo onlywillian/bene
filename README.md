@@ -10,9 +10,11 @@ its technologies, ranking second among the other 14 projects.
 
 ## Screenshots
 
+<div style="display: flex">
+<img src="https://user-images.githubusercontent.com/82155000/200151798-e500a1c2-a05b-4e2e-82ae-cce30f4d3cd2.png" alt="drawing" width="200"/>
 <img src="https://user-images.githubusercontent.com/82155000/200151791-523a7bac-5701-4c7d-b23f-2f0e4ed107d5.png" alt="drawing" width="200"/>
 <img src="https://user-images.githubusercontent.com/82155000/200151795-43f22ce1-bd4e-4e01-810a-5df5da12699f.png" alt="drawing" width="200"/>
-<img src="https://user-images.githubusercontent.com/82155000/200151798-e500a1c2-a05b-4e2e-82ae-cce30f4d3cd2.png" alt="drawing" width="200"/>
+</div>
 ## Installing and using
 
 clone the repository:
