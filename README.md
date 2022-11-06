@@ -45,7 +45,7 @@ Install the dependencies and run the project:
 
 - [@onlywillian](https://www.github.com/onlywillian)
 - [@gabrielmarquezin](https://www.github.com/gabrielmarquezin)
-
+- [@ApenasEricles](https://github.com/ApenasEricles)
 
 ## Aprendizados
 
