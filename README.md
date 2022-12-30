@@ -46,8 +46,3 @@ Install the dependencies and run the project:
 - [@onlywillian](https://www.github.com/onlywillian)
 - [@gabrielmarquezin](https://www.github.com/gabrielmarquezin)
 - [@ApenasEricles](https://github.com/ApenasEricles)
-
-## Aprendizados
-
-O que você aprendeu construindo esse projeto? Quais desafios você enfrentou e como você superou-os?
-
