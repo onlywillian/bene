@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react';
-import { StyleSheet, View, Text, FlatList, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import Back from '../../assets/icons/Arrow';
-import Cat from './Cat';
 
-export default function Header({ displayedName, navigation, handleTypeSwitch }) {
+export default function Header({ displayedName }) {
+    const navigation = useNavigation();
+
     function handleBackClick() {
         navigation.goBack();
     }
@@ -34,6 +35,5 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         textAlignVertical: 'center',
         fontSize: 50,
-        
     }
 });

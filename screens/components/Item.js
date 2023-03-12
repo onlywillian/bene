@@ -1,8 +1,15 @@
-import { StyleSheet, View, Text, Image } from 'react-native';
+import { TouchableOpacity, StyleSheet, View, Text, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Item({ marca, peso, preco, tipo, img }) {
+    const navigation = useNavigation()
+
+    function handleItemClick() {
+        navigation.navigate('Detalhes')
+    }
+
     return (
-        <View style={styles.itemContainer}>
+        <TouchableOpacity style={styles.itemContainer} onPress={handleItemClick}>
             <View style={styles.image}>
                 <Image 
                     style={{ height: '100%' }} 
@@ -17,13 +24,14 @@ export default function Item({ marca, peso, preco, tipo, img }) {
 
                 <Text style={{fontSize: 35, fontWeight: 'bold'}}>R$ {preco}</Text>
             </View>
-        </View>
+        </TouchableOpacity>
     )
 }
 
 const styles = StyleSheet.create({
     itemContainer: {
         height: 150,
+        backgroundColor: '#F2F2F2',
         borderWidth: 1,
         width: '90%',
         marginVertical: 20,

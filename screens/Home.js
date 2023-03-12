@@ -10,15 +10,15 @@ import Shop from '../assets/icons/Shop';
 export default function App({ navigation }) {
   const [media, setMedia] = useState(false);
 
-  // useEffect(() => {
-  //   async function getData() {
-  //     const response = await fetch('https://ceara-cientifico.herokuapp.com/mercados/media');
-  //     const data = await response.json();
+  useEffect(() => {
+    async function getData() {
+      const response = await fetch('https://backend-project-dusky.vercel.app/mercados/media');
+      const data = await response.json();
 
-  //     setMedia(data);
-  //   }
-  //   getData();
-  // }, []);
+      setMedia(data);
+    }
+    getData();
+  }, []);
 
   function movingBetweenScreens(name) {
     navigation.navigate('Pesquisa', { marketName: name });
