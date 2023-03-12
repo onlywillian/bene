@@ -10,15 +10,15 @@ import Shop from '../assets/icons/Shop';
 export default function App({ navigation }) {
   const [media, setMedia] = useState(false);
 
-  useEffect(() => {
-    async function getData() {
-      const response = await fetch('https://ceara-cientifico.herokuapp.com/mercados/media');
-      const data = await response.json();
+  // useEffect(() => {
+  //   async function getData() {
+  //     const response = await fetch('https://ceara-cientifico.herokuapp.com/mercados/media');
+  //     const data = await response.json();
 
-      setMedia(data);
-    }
-    getData();
-  }, []);
+  //     setMedia(data);
+  //   }
+  //   getData();
+  // }, []);
 
   function movingBetweenScreens(name) {
     navigation.navigate('Pesquisa', { marketName: name });
@@ -31,11 +31,11 @@ export default function App({ navigation }) {
           <Blob style={{position: 'absolute', height: 300, width: 300, top: -150, left: -120}} />
           <Blob style={{position: 'absolute', height: 300, width: 300, top: 0, right: -180}} />
           <Leaf style={{position: 'absolute', height: 150, width: 150, top: -40, left: -75, transform: [{rotate: '170deg'}]}} fill='#fff'/>
-          <Leaf style={{position: 'absolute', height: 100, width: 100, top: -50, transform: [{rotate: '125deg'}]}} fill='#fff'/>
+          <Leaf style={{position: 'absolute', height: 100, width: 100, top: -50, left: 30, transform: [{rotate: '125deg'}]}} fill='#fff'/>
           <Leaf style={{position: 'absolute', height: 100, width: 100, top: 150, right: -60, transform: [{rotate: '300deg'}]}} fill='#fff'/>
 
           <Text style={styles.textoGrande}>BENE</Text>
-          <Text style={styles.textoPequeno}>ESTA É A MÉDIA SEMANAL ATUAL DA CESTA BÁSICA EM ITAPAJÉ-CE:</Text>
+          <Text style={styles.textoPequeno}>ESTA É A MÉDIA ATUAL DA CESTA BÁSICA:</Text>
       </View>
       <View style={styles.parteDeBaixo}>
         <View style={styles.bola}>
@@ -75,12 +75,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   parteDeCima: {
-    flex: 1,
+    flex: .6,
     backgroundColor: '#00D264',
     width: '100%',
-    elevation: 5,
-    shadowColor: 'black',
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   parteDeBaixo: {
     flex: 2,
@@ -92,19 +91,18 @@ const styles = StyleSheet.create({
   textoGrande: {
     flex: 3,
     color: 'white',
-    fontSize: RFPercentage(15),
+    fontSize: RFPercentage(12),
     fontWeight: 'bold',
     textAlign: 'center',
     textAlignVertical: 'bottom',
   },
   textoPequeno: {
     flex: 1,
+    width: "45%",
     fontWeight: 'bold',
     color: 'white',
     fontSize: RFPercentage(2),
     textAlign: 'center',
-    marginLeft: "5%",
-    marginRight: "5%",
   },
   precoDaTela: {
     color: 'white',
@@ -137,13 +135,10 @@ const styles = StyleSheet.create({
     flex: 2,
     borderRadius: 180,
     backgroundColor: '#00D264',
-    width: '80%',
-    marginBottom: 30,
-    elevation: 8,
-    shadowColor: 'black',
+    width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 10,
+    borderRadius: 20,
   },
   mercado: {
     flex: 1,

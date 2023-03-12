@@ -59,7 +59,7 @@ export default function Pesquisa({ route, navigation }) {
 
     return (
         <>
-            <Header marketName={marketName} handleTypeSwitch={handleTypeSwitch} navigation={navigation}/>
+            <Header displayedName={marketName} handleTypeSwitch={handleTypeSwitch} navigation={navigation}/>
             <View style={{ flex: 6, backgroundColor: '#fff' }}>
                 {itens ? <FlatList 
                     data={itens}
