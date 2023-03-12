@@ -5,12 +5,7 @@ export default function Item({ marca, peso, preco, tipo, img }) {
         <View style={styles.itemContainer}>
             <View style={styles.image}>
                 <Image 
-                    style={{
-                        color: 'white', 
-                        textAlign: 'center', 
-                        textAlignVertical: 'center', 
-                        height: '100%'
-                    }} 
+                    style={{ height: '100%' }} 
                     source={{uri: typeof img == 'string' ? img : img[1]}}
                     resizeMode='contain'
                 />
