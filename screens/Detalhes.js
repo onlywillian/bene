@@ -2,10 +2,12 @@ import { StyleSheet, Text, View } from "react-native";
 
 import Header from "./components/Header";
 
-export default function Detalhes({ navigation }) {
+export default function Detalhes({ route, navigation }) {
+    // const {} = route.params;
+
     return (
         <>
-            <Header displayedName={'Arroz'} navigation={navigation}/>
+            <Header displayedName={'Arroz'}/>
             <View style={styles.container}>
                 <View style={{ flex: 3, flexDirection: 'row', gap: 20 }}>
                     <View style={styles.imgLocation}>

@@ -12,7 +12,7 @@ export default function App({ navigation }) {
 
   useEffect(() => {
     async function getData() {
-      const response = await fetch('https://backend-project-dusky.vercel.app/mercados/media');
+      const response = await fetch('https://backend-project-l0bm1asm2-gabrielmarquezin.vercel.app/mercados/media');
       const data = await response.json();
 
       setMedia(data);

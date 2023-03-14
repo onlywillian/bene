@@ -13,7 +13,7 @@ export default function Pesquisa({ route, navigation }) {
     const { marketName } = route.params;
 
     async function getItemsData() {
-        const allItemsResponse = await fetch(`https://backend-project-dusky.vercel.app/${marketName.toLowerCase()}`);
+        const allItemsResponse = await fetch(`https://backend-project-l0bm1asm2-gabrielmarquezin.vercel.app/${marketName.toLowerCase()}`);
         const allItemsData = await allItemsResponse.json();
 
         setitens(allItemsData);
@@ -27,7 +27,7 @@ export default function Pesquisa({ route, navigation }) {
         if (type == 'todos') return getItemsData();
 
         async function getItemsByTypeData() {
-            const allItemsResponse = await fetch(`https://backend-project-dusky.vercel.app/${marketName.toLowerCase()}/produtos?tipo=${type}`);
+            const allItemsResponse = await fetch(`https://backend-project-l0bm1asm2-gabrielmarquezin.vercel.app/${marketName.toLowerCase()}/produtos?tipo=${type}`);
             const allItemsData = await allItemsResponse.json();
             
             console.log(allItemsData);
@@ -38,6 +38,8 @@ export default function Pesquisa({ route, navigation }) {
     }
 
     const renderItem = ({ item }) => {
+        item = item.data
+        
         var peso = '';
 
         if (item.pesoG != null) {
@@ -86,7 +88,7 @@ export default function Pesquisa({ route, navigation }) {
     }
 
     const renderCategorie = ({ item }) => (
-        <Cat cat={item} handleCatClick={handleCatClick} handleTypeSwitch={handleTypeSwitch}/>
+        <Cat cat={item.data} handleCatClick={handleCatClick} handleTypeSwitch={handleTypeSwitch}/>
     )
 
     return (
