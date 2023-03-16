@@ -30,8 +30,6 @@ export default function Pesquisa({ route, navigation }) {
             const allItemsResponse = await fetch(`https://backend-project-l0bm1asm2-gabrielmarquezin.vercel.app/${marketName.toLowerCase()}/produtos?tipo=${type}`);
             const allItemsData = await allItemsResponse.json();
             
-            console.log(allItemsData);
-            
             setitens(allItemsData.Products);
         }
         getItemsByTypeData();
@@ -55,8 +53,10 @@ export default function Pesquisa({ route, navigation }) {
                 marca={item.marca}
                 peso={peso}
                 preco={item.preco}
-                tipo={item.description || item.tipo}
+                descricao={item.description}
+                tipo={item.tipo}
                 img={item.img}
+                mercado={item.mercado}
             />
         )
     };

@@ -1,11 +1,20 @@
 import { TouchableOpacity, StyleSheet, View, Text, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-export default function Item({ marca, peso, preco, tipo, img }) {
+export default function Item({ marca, peso, preco, tipo, img, mercado, descricao }) {
     const navigation = useNavigation()
+    
 
     function handleItemClick() {
-        navigation.navigate('Detalhes')
+        navigation.navigate('Detalhes', {
+            marca: marca,
+            peso: peso,
+            preco: preco,
+            tipo: tipo,
+            descricao: descricao,
+            img: img,
+            mercado: mercado
+        })
     }
 
     return (
@@ -18,11 +27,11 @@ export default function Item({ marca, peso, preco, tipo, img }) {
                 />
             </View>
             <View style={styles.item}>
-                <Text style={styles.text}>{tipo.toUpperCase()}</Text>
+                <Text style={styles.text}>{descricao?.toUpperCase()}</Text>
                 <Text style={styles.text}>MARCA: {marca?.toUpperCase()}</Text>
                 <Text style={styles.text}>PESO: {peso}</Text>
 
-                <Text style={{fontSize: 35, fontWeight: 'bold'}}>R$ {preco}</Text>
+                <Text style={{fontSize: 35, fontWeight: 'bold'}}>R$ {preco.toFixed(2)}</Text>
             </View>
         </TouchableOpacity>
     )
