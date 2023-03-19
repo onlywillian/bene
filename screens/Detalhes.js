@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Image } from "react-native";
 
 import Header from "./components/Header";
 
-export default function Detalhes({ route, navigation }) {
+export default function Detalhes({ route }) {
     const { marca, peso, preco, tipo, img, mercado, descricao } = route.params;
 
     const [statsInfo, setStatsInfo] = useState([])
@@ -31,18 +31,27 @@ export default function Detalhes({ route, navigation }) {
                         />
                     </View>
                     <View style={styles.productInfo}>
-                        <Text style={styles.headerText}>{descricao}</Text>
-                        <Text>Marca: {marca}</Text>
-                        <Text>Mercado: {mercado}</Text>
-                        <Text>Peso: {peso}</Text>
+                        <Text style={styles.headerText}>{descricao.toUpperCase()}</Text>
+                        <Text>
+                            <Text style={{fontWeight: 'bold'}}>MARCA: </Text>
+                            {marca.toUpperCase()}
+                        </Text>
+                        <Text>
+                            <Text style={{fontWeight: 'bold'}}>MERCADO: </Text>
+                            {mercado.toUpperCase()}
+                        </Text>
+                        <Text>
+                            <Text style={{fontWeight: 'bold'}}>PESO: </Text>
+                            {peso.toUpperCase()}
+                        </Text>
                         <Text style={styles.headerText}>R$ {preco.toFixed(2)}</Text>
                     </View>
                 </View>
                 <View style={{ flex: 1, flexDirection: 'row', gap: 20 }}>
-                    <Text style={styles.centerText}>O preço que mais aparece:</Text>
-                    <Text style={styles.centerText}>Regularidade do preço:</Text>
+                    <Text style={styles.centerText}>O PREÇO QUE MAIS APARECE:</Text>
+                    <Text style={styles.centerText}>REGULARIDADE DO PREÇO:</Text>
                 </View>
-                <View style={{ flex: 2, flexDirection: 'row', gap: 20 }}>
+                <View style={{ flex: 2, flexDirection: 'row', gap: 20, justifyContent: 'space-around' }}>
                     <View style={styles.ball}>
                         <Text style={styles.headerText}>R$ {statsInfo.Moda}</Text>
                     </View>
@@ -59,13 +68,17 @@ const styles = StyleSheet.create({
     container: {
         flex: 6,
         backgroundColor: '#fff',
-        padding: 20,
-        gap: 20
+        padding: 10,
+        gap: 20,
+        paddingTop: 40
     },
     imgLocation: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        borderColor: 'black',
+        borderWidth: 1,
+        padding: 1
     },
     productInfo: {
         flex: 1,
@@ -80,15 +93,16 @@ const styles = StyleSheet.create({
         flex: 1, 
         textAlign: 'center', 
         textAlignVertical: 'bottom',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        fontSize: 20
     },
     ball: {
-        flex: 1,
+        width: 150,
+        height: 150,
         borderWidth: 1,
         borderColor: '#00D264',
         borderRadius: 100,
         alignItems: 'center',
         justifyContent: 'center',
-        height: '90%'
     }
 })

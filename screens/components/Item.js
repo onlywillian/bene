@@ -40,7 +40,6 @@ export default function Item({ marca, peso, preco, tipo, img, mercado, descricao
 const styles = StyleSheet.create({
     itemContainer: {
         height: 150,
-        backgroundColor: '#F2F2F2',
         borderWidth: 1,
         width: '90%',
         marginVertical: 20,

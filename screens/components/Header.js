@@ -2,21 +2,29 @@ import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import Back from '../../assets/icons/Arrow';
+import Blob from '../../assets/icons/Blob';
+import Leaf from '../../assets/icons/Leaf';
 
 export default function Header({ displayedName }) {
     const navigation = useNavigation();
 
     function handleBackClick() {
-        navigation.goBack();
+        navigation.navigate('Home');
     }
 
     return (
         <>
             <View style={styles.container}>
+                <Blob style={{position: 'absolute', height: 250, width: 300, top: -150, left: -120}} />
+                <Blob style={{position: 'absolute', height: 150, width: 300, bottom: -20, right: -150}} />
+                <Leaf style={{position: 'absolute', height: 80, width: 150, top: -40, left: -75, transform: [{rotate: '170deg'}]}} fill='#fff'/>
+                <Leaf style={{position: 'absolute', height: 60, width: 100, top: -30, left: 20, transform: [{rotate: '125deg'}]}} fill='#fff'/>
+                <Leaf style={{position: 'absolute', height: 80, width: 100, bottom: 0, right: -60, transform: [{rotate: '300deg'}]}} fill='#fff'/>
+
                 <TouchableOpacity onPress={handleBackClick}>
-                    <Back style={{position: 'absolute', height: 30, width: 30, transform: [{rotate: '180deg'}]}} fill="#fff"/>
+                    <Back style={{position: 'absolute', height: 30, width: 30, top: 20, left: 30,transform: [{rotate: '180deg'}]}} fill="#fff"/>
                 </TouchableOpacity>
-                <Text style={styles.headerText}>{ displayedName }</Text>
+                <Text style={styles.headerText}>{ displayedName.toUpperCase() }</Text>
             </View>
         </>
     )
@@ -25,8 +33,14 @@ export default function Header({ displayedName }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1.5,
+        position: 'relative',
         backgroundColor: '#00D264',
         width: '100%',
+        shadowColor: '#171717',
+        shadowOffset: {width: -2, height: 4},
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
+        zIndex: 10,
     },
     headerText: {
         flex: 1,
@@ -35,5 +49,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         textAlignVertical: 'center',
         fontSize: 50,
+        textShadowColor: '#888',
+        textShadowRadius: 3,
+        textShadowOffset: { width: 0, height: 3 }
     }
 });
