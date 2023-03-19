@@ -19,8 +19,16 @@ export default function Pesquisa({ route, navigation }) {
         setitens(allItemsData);
     }
 
+    async function getCategoriesData() {
+        const response = await fetch('https://backend-project-dusky.vercel.app/mercados/categorias');
+        const data = await response.json();
+
+        setCategories(data);
+    }
+
     useEffect(() => {
         getItemsData();
+        getCategoriesData()
     }, []);
 
     function handleTypeSwitch( type ) {
@@ -60,28 +68,16 @@ export default function Pesquisa({ route, navigation }) {
             />
         )
     };
-
-    useEffect(() => {
-         async function getData() {
-            const response = await fetch('https://backend-project-dusky.vercel.app/mercados/categorias');
-            const data = await response.json();
-
-            setCategories(data);
-        }
-        getData();
-        
-        handleCatClick(0)
-    }, []);
     
     function handleCatClick(id) {
-        const newCategories = categories.map(e => {
-            if (e.id === id) {
-                e.active = true
+        const newCategories = categories.map(cat => {
+            if (cat.data.id === id) {
+                cat.data.acitive = true
             } else {
-                e.active = false
+                cat.data.acitive = false
             }
 
-            return e;
+            return cat;
         })
         
         return setCategories(newCategories);
@@ -93,7 +89,7 @@ export default function Pesquisa({ route, navigation }) {
 
     return (
         <>
-            <Header displayedName={marketName} handleTypeSwitch={handleTypeSwitch} navigation={navigation}/>
+            <Header displayedName={marketName} navigation={navigation}/>
             <View style={styles.catsContainer}>
                 <FlatList 
                     renderItem={renderCategorie}
@@ -118,18 +114,4 @@ const styles = StyleSheet.create({
         minHeight: 0.5,
         flexDirection: 'row',
     },
-    cats: {
-        width: 100,
-        minHeight: 10,
-        backgroundColor: '#fff',
-        borderRadius: 50,
-        margin: 15
-    },
-    catsActive: {
-        width: 100,
-        minHeight: 10,
-        backgroundColor: '#00D264',
-        borderRadius: 50,
-        margin: 15
-    }
 })
