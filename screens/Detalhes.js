@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Image } from "react-native";
 
 import Header from "./components/Header";
 
-export default function Detalhes({ route }) {
+export default function Detalhes({ route, navigation }) {
     const { marca, peso, preco, tipo, img, mercado, descricao } = route.params;
 
     const [statsInfo, setStatsInfo] = useState([])
@@ -20,7 +20,7 @@ export default function Detalhes({ route }) {
 
     return (
         <>
-            <Header displayedName={tipo}/>
+            <Header displayedName={tipo} navigation={navigation}/>
             <View style={styles.container}>
                 <View style={{ flex: 3, flexDirection: 'row', gap: 20 }}>
                     <View style={styles.imgLocation}>

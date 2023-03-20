@@ -1,15 +1,13 @@
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 
 import Back from '../../assets/icons/Arrow';
 import Blob from '../../assets/icons/Blob';
 import Leaf from '../../assets/icons/Leaf';
 
-export default function Header({ displayedName }) {
-    const navigation = useNavigation();
-
+export default function Header({ displayedName, navigation }) {
     function handleBackClick() {
-        navigation.navigate('Home');
+        console.log(navigation);
+        navigation.goBack();
     }
 
     return (
@@ -22,7 +20,7 @@ export default function Header({ displayedName }) {
                 <Leaf style={{position: 'absolute', height: 80, width: 100, bottom: 0, right: -60, transform: [{rotate: '300deg'}]}} fill='#fff'/>
 
                 <TouchableOpacity onPress={handleBackClick}>
-                    <Back style={{position: 'absolute', height: 30, width: 30, top: 20, left: 30,transform: [{rotate: '180deg'}]}} fill="#fff"/>
+                    <Back style={{position: 'absolute', height: 50, width: 30, top: 20, left: 30,transform: [{rotate: '180deg'}]}} fill="#fff"/>
                 </TouchableOpacity>
                 <Text style={styles.headerText}>{ displayedName.toUpperCase() }</Text>
             </View>
