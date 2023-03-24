@@ -6,7 +6,7 @@ import Leaf from '../../assets/icons/Leaf';
 
 export default function Header({ displayedName, navigation }) {
     function handleBackClick() {
-        console.log(navigation);
+        console.log('hello');
         navigation.goBack();
     }
 
@@ -19,8 +19,8 @@ export default function Header({ displayedName, navigation }) {
                 <Leaf style={{position: 'absolute', height: 60, width: 100, top: -30, left: 20, transform: [{rotate: '125deg'}]}} fill='#fff'/>
                 <Leaf style={{position: 'absolute', height: 80, width: 100, bottom: 0, right: -60, transform: [{rotate: '300deg'}]}} fill='#fff'/>
 
-                <TouchableOpacity onPress={handleBackClick}>
-                    <Back style={{position: 'absolute', height: 50, width: 30, top: 20, left: 30,transform: [{rotate: '180deg'}]}} fill="#fff"/>
+                <TouchableOpacity onPress={handleBackClick} style={styles.backButton}>
+                    <Back style={{transform: [{rotate: '180deg'}]}} fill="#fff"/>
                 </TouchableOpacity>
                 <Text style={styles.headerText}>{ displayedName.toUpperCase() }</Text>
             </View>
@@ -39,6 +39,14 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.2,
         shadowRadius: 3,
         zIndex: 10,
+    },
+    backButton: {
+        position: 'absolute', 
+        zIndex: 1, 
+        top: 20, 
+        left: 30, 
+        height: 30, 
+        width: 30
     },
     headerText: {
         flex: 1,
