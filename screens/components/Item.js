@@ -1,7 +1,7 @@
 import { TouchableOpacity, StyleSheet, View, Text, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-export default function Item({ marca, peso, preco, tipo, img, mercado, descricao }) {
+export default function Item({ marca, peso, preco, tipo, img, mercado, descricao, cod }) {
     const navigation = useNavigation()
     
 
@@ -13,7 +13,8 @@ export default function Item({ marca, peso, preco, tipo, img, mercado, descricao
             tipo: tipo,
             descricao: descricao,
             img: img,
-            mercado: mercado
+            mercado: mercado,
+            cod: cod
         })
     }
 

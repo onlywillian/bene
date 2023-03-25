@@ -44,7 +44,8 @@ export default function Pesquisa({ route, navigation }) {
     }
 
     const renderItem = ({ item }) => {
-        item = item.data
+        cod = item.codigo;
+        item = item.data;
         
         var peso = '';
 
@@ -65,6 +66,7 @@ export default function Pesquisa({ route, navigation }) {
                 tipo={item.tipo}
                 img={item.img}
                 mercado={item.mercado}
+                cod={cod}
             />
         )
     };

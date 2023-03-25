@@ -4,7 +4,16 @@ import { StyleSheet, Text, View, Image } from "react-native";
 import Header from "./components/Header";
 
 export default function Detalhes({ route, navigation }) {
-    const { marca, peso, preco, tipo, img, mercado, descricao } = route.params;
+    const { 
+        marca, 
+        peso, 
+        preco, 
+        tipo, 
+        img, 
+        mercado, 
+        descricao, 
+        cod 
+    } = route.params;
 
     const [statsInfo, setStatsInfo] = useState([])
 
@@ -43,6 +52,10 @@ export default function Detalhes({ route, navigation }) {
                         <Text>
                             <Text style={{fontWeight: 'bold'}}>PESO: </Text>
                             {peso.toUpperCase()}
+                        </Text>
+                        <Text>
+                            <Text style={{fontWeight: 'bold'}}>CÓDIGO: </Text>
+                            {cod}
                         </Text>
                         <Text style={styles.headerText}>R$ {preco.toFixed(2)}</Text>
                     </View>
