@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Image } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { RFPercentage } from "react-native-responsive-fontsize";
@@ -6,6 +7,8 @@ import { RFPercentage } from "react-native-responsive-fontsize";
 import Blob from '../assets/icons/Blob';
 import Leaf from '../assets/icons/Leaf';
 import Shop from '../assets/icons/Shop';
+
+import BlobSvg from '../assets/svgs/blob.svg';
 
 export default function App({ navigation }) {
   const [media, setMedia] = useState(false);
@@ -28,7 +31,7 @@ export default function App({ navigation }) {
     <View style={styles.container}>
       <View style={styles.parteDeCima}>
           {/* icons position */}
-          <Blob style={{position: 'absolute', height: 300, width: 300, top: -150, left: -120}} />
+          <Image source={BlobSvg} style={{position: 'absolute', height: 300, width: 300, top: -150, left: -120}} />
           <Blob style={{position: 'absolute', height: 300, width: 300, top: 0, right: -180}} />
           <Leaf style={{position: 'absolute', height: 150, width: 150, top: -40, left: -75, transform: [{rotate: '170deg'}]}} fill='#fff'/>
           <Leaf style={{position: 'absolute', height: 100, width: 100, top: -50, left: 30, transform: [{rotate: '125deg'}]}} fill='#fff'/>

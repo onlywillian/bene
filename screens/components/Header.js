@@ -6,7 +6,6 @@ import Leaf from '../../assets/icons/Leaf';
 
 export default function Header({ displayedName, navigation }) {
     function handleBackClick() {
-        console.log('hello');
         navigation.goBack();
     }
 
