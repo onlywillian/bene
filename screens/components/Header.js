@@ -19,7 +19,6 @@ export default function Header({ displayedName, navigation }) {
                 <Leaf style={{position: 'absolute', height: 80, width: 100, bottom: 0, right: -60, transform: [{rotate: '300deg'}]}} fill='#fff'/>
 
                 <TouchableOpacity onPress={handleBackClick} style={styles.backButton}>
-                    <Back style={{transform: [{rotate: '180deg'}]}} fill="#fff"/>
                 </TouchableOpacity>
                 <Text style={styles.headerText}>{ displayedName.toUpperCase() }</Text>
             </View>

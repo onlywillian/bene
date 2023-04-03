@@ -1,5 +1,26 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { setJSExceptionHandler } from 'react-native-exception-handler';
+import { Alert } from 'react-native';
+
+// Error handling
+const handleError = (e, isFatal) => {
+  if (isFatal) {
+    Alert.alert(
+        'Unexpected error occurred',
+        `
+        Error: ${(isFatal) ? 'Fatal:' : ''} ${e.name} ${e.message}
+        `
+    );
+  } else {
+    console.log(e); // So that we can see it in the ADB logs in case of Android if needed
+  }
+};
+
+setJSExceptionHandler((error, isFatal) => {
+  console.log('caught global error');
+  handleError(error, isFatal);
+}, true);
 
 import Home from './screens/Home';
 import Pesquisa from './screens/Pesquisa';
