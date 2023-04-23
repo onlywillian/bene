@@ -7,8 +7,6 @@ export default function Detalhes({ route, navigation }) {
   const { marca, peso, preco, tipo, img, mercado, descricao, cod } =
     route.params;
 
-  console.log(mercado);
-
   const [statsInfo, setStatsInfo] = useState([]);
 
   useEffect(() => {
@@ -69,7 +67,9 @@ export default function Detalhes({ route, navigation }) {
           }}
         >
           <View style={styles.ball}>
-            <Text style={styles.headerText}>R$ {statsInfo.Moda}</Text>
+            <Text style={styles.headerText}>
+              R$ {typeof statsInfo.Moda === "string" ? "?" : statsInfo.Moda}
+            </Text>
           </View>
           <View style={styles.ball}>
             <Text style={styles.headerText}>{statsInfo.DesvioPadrao}</Text>
