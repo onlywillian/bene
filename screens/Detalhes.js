@@ -12,11 +12,13 @@ export default function Detalhes({ route, navigation }) {
   useEffect(() => {
     async function getItemsByTypeData() {
       const allItemsResponse = await fetch(
-        `https://backend-project-l0bm1asm2-gabrielmarquezin.vercel.app/${mercado.toLowerCase()}/produtos?tipo=${tipo}`
+        `https://backend-project-gilb-gabrielmarquezin.vercel.app/estatistica/${mercado.toLowerCase()}?id=${cod}`
       );
       const allItemsData = await allItemsResponse.json();
 
-      setStatsInfo(allItemsData.statisticData);
+      console.log(allItemsData);
+
+      setStatsInfo(allItemsData);
     }
     getItemsByTypeData();
   }, []);
@@ -68,11 +70,11 @@ export default function Detalhes({ route, navigation }) {
         >
           <View style={styles.ball}>
             <Text style={styles.headerText}>
-              R$ {typeof statsInfo.Moda === "string" ? "?" : statsInfo.Moda}
+              R$ {typeof statsInfo?.Moda === "string" ? "?" : statsInfo.Moda}
             </Text>
           </View>
           <View style={styles.ball}>
-            <Text style={styles.headerText}>{statsInfo.DesvioPadrao}</Text>
+            <Text style={styles.headerText}>{statsInfo.Variancia}</Text>
           </View>
         </View>
       </View>

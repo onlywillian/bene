@@ -10,6 +10,8 @@ export default function Pesquisa({ route, navigation }) {
   const [itens, setitens] = useState(false);
   const [categories, setCategories] = useState([]);
 
+  console.log(itens);
+
   const { marketName } = route.params;
 
   async function getItemsData() {
@@ -66,9 +68,9 @@ export default function Pesquisa({ route, navigation }) {
     return (
       <Item
         marca={item.marca}
-        peso={peso}
+        peso={item.tamanho || peso}
         preco={item.preco}
-        descricao={item.description || item.descricao}
+        descricao={item.description || item.descricao || item.classificacao}
         tipo={item.tipo}
         img={item.img}
         mercado={item.mercado || item.market}

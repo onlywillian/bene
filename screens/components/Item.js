@@ -16,7 +16,7 @@ export default function Item({
   function handleItemClick() {
     navigation.navigate("Detalhes", {
       marca: marca,
-      peso: peso,
+      peso: String(peso),
       preco: preco,
       tipo: tipo,
       descricao: descricao,
