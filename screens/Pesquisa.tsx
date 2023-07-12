@@ -7,7 +7,7 @@ import Item from "./components/Item";
 import Cat from "./components/Cat";
 
 export default function Pesquisa({ route, navigation }) {
-  const [itens, setitens] = useState(false);
+  const [itens, setitens] = useState(null);
   const [categories, setCategories] = useState([]);
 
   console.log(itens);
@@ -52,7 +52,7 @@ export default function Pesquisa({ route, navigation }) {
   }
 
   const renderItem = ({ item }) => {
-    cod = item.codigo;
+    let cod = item.codigo;
     item = item.data;
 
     var peso = "";

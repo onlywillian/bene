@@ -7,7 +7,7 @@ export default function Detalhes({ route, navigation }) {
   const { marca, peso, preco, tipo, img, mercado, descricao, cod } =
     route.params;
 
-  const [statsInfo, setStatsInfo] = useState([]);
+  const [statsInfo, setStatsInfo] = useState<any>([]);
 
   useEffect(() => {
     async function getItemsByTypeData() {

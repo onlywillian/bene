@@ -8,7 +8,7 @@ import Leaf from "../assets/icons/Leaf";
 import Shop from "../assets/icons/Shop";
 
 export default function App({ navigation }) {
-  const [media, setMedia] = useState(false);
+  const [media, setMedia] = useState<null | any>(null);
 
   useEffect(() => {
     async function getData() {
@@ -207,7 +207,6 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: 20,
   },
   mercado: {
     flex: 1,
@@ -219,7 +218,6 @@ const styles = StyleSheet.create({
   },
   botaos: {
     flex: 1,
-    alignItems: "space-between",
     justifyContent: "center",
     flexDirection: "row",
     width: "90%",

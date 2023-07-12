@@ -14,16 +14,19 @@ export default function Item({
   const navigation = useNavigation();
 
   function handleItemClick() {
-    navigation.navigate("Detalhes", {
-      marca: marca,
-      peso: String(peso),
-      preco: preco,
-      tipo: tipo,
-      descricao: descricao,
-      img: img,
-      mercado: mercado,
-      cod: cod,
-    });
+    navigation.navigate(
+      "Detalhes" as never,
+      {
+        marca: marca,
+        peso: String(peso),
+        preco: preco,
+        tipo: tipo,
+        descricao: descricao,
+        img: img,
+        mercado: mercado,
+        cod: cod,
+      } as never
+    );
   }
 
   return (
